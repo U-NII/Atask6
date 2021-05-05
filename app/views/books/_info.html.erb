@@ -11,7 +11,28 @@
 	   <th>introduction</th>
 	   <th><%= user.introduction %></th>
    </tr>
+   <tr>
+    <th>follows</th>
+    <th><%= link_to @user.following_user.count, following_user_path(user)  %></th>
+   </tr>
+   <tr>
+    <th>followers</th>
+    <th><%= link_to @user.follower_user.count, followers_user_path(user) %></th>
+   </tr>
   </tbody>
+ </table>
+ <table class="table">
+  <% unless user == current_user %>
+  <% if current_user.following?(user) %>
+   <button type="button" class="btn btn-danger">
+    <%= link_to "Unfollow", unfollow_path(user), method: :post %>
+   </button>
+  <% else %>
+   <button type="button" class="btn btn-success">
+    <%= link_to "Follow", follow_path(user), method: :post %>
+   </button>
+  <% end %>
+  <% end %>
  </table>
  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
   <i class="fas fa-user-cog"></i>
