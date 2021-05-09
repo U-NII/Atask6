@@ -1,0 +1,15 @@
+ <p>コメント件数：<%= comments.count %></p>
+  <% comments.each do |book_comment| %>
+   <%= image_tag('no_image.jpg',size:"35x35") %>
+   <%= book_comment.user.name %>
+   <div class="far fa-comments">
+    <%= book_comment.created_at.strftime('%Y/%m/%d') %>
+    <%= link_to "削除", book_book_comment_path(book_comment.book.id, book_comment.id), class:"btn btn-sm btn-danger destroy_book_30520", method: :delete, remote: true %>
+   </div>
+   <div>
+    <%= book_comment.comment %>
+    <%# if book_comment.user == current_user %>
+   </div>
+   <%# end %>
+  <% end %>
+  <p></p>
