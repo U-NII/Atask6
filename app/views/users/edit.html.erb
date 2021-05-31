@@ -11,7 +11,7 @@
        <% end %>
        <div>
         <label>Name</label><br>
-        <%= f.text_field :name %>
+        <%= f.text_field :name %> #ネームを表示
        </div>
        <div>
         <label>Image</label><br>
@@ -24,8 +24,8 @@
          <%= f.submit 'Update User' %>
         </div>
        </div>
-      <% end %>
-    </div>#
+      <% end %> 
+    </div>
   </div>
 </div>
 <%= render 'books/footer', user: @user,book: @book %>
